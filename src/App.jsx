@@ -11,22 +11,14 @@ function getUserById(userId) {
 
 export const posts = postsFromServer.map(post => ({
   ...post,
-  userId: getUserById(post.userId),
-}));
-
-function getPostById(id) {
-  return postsFromServer.find(post => post.id === id) || null;
-}
-
-export const comments = commentsFromServer.map(comment => ({
-  ...comment,
-  postId: getPostById(comment.id),
+  user: getUserById(post.userId),
+  comments: commentsFromServer.filter(comment => comment.postId === post.id),
 }));
 
 export const App = () => (
   <section className="App">
     <h1 className="App__title">Static list of posts</h1>
-    {/* {console.log(comments)} */}
-    <PostList posts={posts} comments={comments} />
+    {console.log(posts)}
+    <PostList posts={posts} />
   </section>
 );
