@@ -1,28 +1,21 @@
-import {UserInfo} from '../UserInfo'
-import {CommentList} from '../CommentList'
-import { CommentInfo } from '../CommentInfo'
-import './Postinfo.scss'
+import { UserInfo } from '../UserInfo';
+import { CommentList } from '../CommentList';
+import './PostInfo.scss';
 
-export const PostInfo = ({post, comments}) => 
+export const PostInfo = ({ post, comments }) => (
+  <div className="PostInfo">
+    <div className="PostInfo__header">
+      <h3 className="PostInfo__title">{post.title}</h3>
 
-<>
-      <div className="PostInfo">
-        <div className="PostInfo__header">
-          <h3 className="PostInfo__title">{post.title}</h3>
+      <p>
+        {' Posted by  '}
+        <UserInfo post={post} />
+      </p>
+    </div>
 
-          <p>
-            {' Posted by  '}
-                <UserInfo post={post} />
-          </p>
-        </div>
+    <p className="PostInfo__body">{post.body}</p>
 
-        <p className="PostInfo__body">
-          {post.body}
-        </p>
-
-        <hr />
-        <CommentList comments={comments}/>
-        
-      </div>
-
-</>;
+    <hr />
+    <CommentList comments={comments} />
+  </div>
+);

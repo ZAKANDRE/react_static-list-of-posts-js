@@ -1,5 +1,5 @@
 import './App.scss';
-import {PostList} from './components/PostList'
+import { PostList } from './components/PostList';
 
 import postsFromServer from './api/posts.json';
 import commentsFromServer from './api/comments.json';
@@ -20,14 +20,13 @@ function getPostById(id) {
 
 export const comments = commentsFromServer.map(comment => ({
   ...comment,
-  postId: getUserById(comment.id),
+  postId: getPostById(comment.id),
 }));
 
 export const App = () => (
   <section className="App">
     <h1 className="App__title">Static list of posts</h1>
     {/* {console.log(comments)} */}
-    <PostList posts={posts} comments={comments}/>
-
+    <PostList posts={posts} comments={comments} />
   </section>
 );
