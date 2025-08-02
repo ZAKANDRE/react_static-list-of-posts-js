@@ -14,7 +14,6 @@ export const posts = postsFromServer.map(post => ({
   user: getUserById(post.userId),
   comments: commentsFromServer.filter(comment => comment.postId === post.id),
 }));
-  {console.log(posts)}
 
 export const App = () => (
   <section className="App">
