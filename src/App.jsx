@@ -14,11 +14,11 @@ export const posts = postsFromServer.map(post => ({
   user: getUserById(post.userId),
   comments: commentsFromServer.filter(comment => comment.postId === post.id),
 }));
+  {console.log(posts)}
 
 export const App = () => (
   <section className="App">
     <h1 className="App__title">Static list of posts</h1>
-    {console.log(posts)}
     <PostList posts={posts} />
   </section>
 );
